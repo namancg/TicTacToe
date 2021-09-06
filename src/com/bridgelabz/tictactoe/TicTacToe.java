@@ -9,6 +9,7 @@ public class TicTacToe {
 			System.out.println("TICTACTOE GAME");
 			createBoard();
 			choosePawn();
+			showBoard();
 		}
 		static void createBoard() {
 			for( int i=1;i<10;i++)
@@ -27,7 +28,11 @@ public class TicTacToe {
 			}
 			else
 				computer ='X';
-			
-			
+		}
+		static void showBoard()
+		{
+			 	System.out.println( board[1] + "|" + board[2]  + "|" + board[3] + "  ");
+		        System.out.println( board[4] + "|" + board[5]  + "|" + board[6] + "  ");
+		        System.out.println( board[7] + "|" + board[8]  + "|" + board[9] + "  ");
 		}
 }
