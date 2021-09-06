@@ -107,17 +107,17 @@ public class TicTacToe {
 		{
 			System.out.println("Computer's Turn");
 			do {
-				int cornerLoc = randomGenerator.nextInt(4) + 1;		
+				int cornerLocation = randomGenerator.nextInt(4) + 1;		
 				if (predictWinLocationAndBlock()) {
 				}
 				else {
-					if(cornerLoc == 1)
+					if(cornerLocation == 1)
 						playLocation = 1;
-					if(cornerLoc == 2)
+					if(cornerLocation == 2)
 						playLocation = 3;
-					if(cornerLoc == 3)
+					if(cornerLocation == 3)
 						playLocation = 7;
-					if(cornerLoc == 4)
+					if(cornerLocation == 4)
 						playLocation = 9;
 				}
 			} while (!isEmpty(playLocation));
