@@ -36,6 +36,7 @@ public class TicTacToe {
 			{
 					board[i]=' ';
 			}
+			checkWinner=false;
 		}
 		static void choosePawn() {
 			System.out.println("CHOOSE THE PAWN TO PLAY WITH");
