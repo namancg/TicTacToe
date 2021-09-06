@@ -10,6 +10,7 @@ public class TicTacToe {
 			createBoard();
 			choosePawn();
 			showBoard();
+			playerMove();
 		}
 		static void createBoard() {
 			for( int i=1;i<10;i++)
@@ -35,4 +36,17 @@ public class TicTacToe {
 		        System.out.println( board[4] + "|" + board[5]  + "|" + board[6] + "  ");
 		        System.out.println( board[7] + "|" + board[8]  + "|" + board[9] + "  ");
 		}
+		static void playerMove() 
+		{
+		System.out.println("Enter the part of the board you want to make your move - 1 to 9");
+		int userInput = sc.nextInt();
+		if(board[userInput]!='O' && board[userInput]!='X')
+		{
+			System.out.println("THIS SPACE IS FREE");
+		}
+		else
+			System.out.println("THIS SPACE IS NOT FREE, SELECT ANOTHER SPACE");
+		showBoard();
+		}
+	
 }
