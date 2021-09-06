@@ -453,7 +453,7 @@ public class TicTacToe {
 				}
 			} while (!isWinner() && !checkIfBoardFull());
 			if (checkIfBoardFull() && !isWinner())
-				System.out.println("Game TIED.");
+				System.out.println("THE BOARD IS FULL, SO THE GAME IS TIED");
 
 		}
 
