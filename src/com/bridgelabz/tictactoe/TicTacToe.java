@@ -9,8 +9,8 @@ public class TicTacToe {
 			System.out.println("TICTACTOE GAME");
 			createBoard();
 			choosePawn();
-			showBoard();
-			playerMove();
+			//showBoard();
+			desiredMove();
 		}
 		static void createBoard() {
 			for( int i=1;i<10;i++)
@@ -36,17 +36,27 @@ public class TicTacToe {
 		        System.out.println( board[4] + "|" + board[5]  + "|" + board[6] + "  ");
 		        System.out.println( board[7] + "|" + board[8]  + "|" + board[9] + "  ");
 		}
-		static void playerMove() 
+		static boolean playerMove(int userInput) 
 		{
-		System.out.println("Enter the part of the board you want to make your move - 1 to 9");
-		int userInput = sc.nextInt();
-		if(board[userInput]!='O' && board[userInput]!='X')
+			if(board[userInput] == 'O' && board[userInput] == 'X') {
+				return false;
+			}
+			else {
+				System.out.println("GO AHEAD AND MAKE YOUR MOVE");
+				return true;
+			}
+		}
+		static void desiredMove() 
 		{
-			System.out.println("THIS SPACE IS FREE");
+			System.out.println("Enter the part of the board you want to make your move - 1 to 9");
+			int userInput = sc.nextInt();
+			if(playerMove(userInput))
+				board[userInput] = playerPawn;
+			else {
+				System.out.println("Cell already occupied!. Choose a different cell;");
+			}
+			showBoard();
 		}
-		else
-			System.out.println("THIS SPACE IS NOT FREE, SELECT ANOTHER SPACE");
-		showBoard();
-		}
+		
 	
 }
