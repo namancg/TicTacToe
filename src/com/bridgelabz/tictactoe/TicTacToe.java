@@ -4,11 +4,13 @@ public class TicTacToe {
 	static char[] board= new char[10];
 	static char playerPawn,computer;
 	static Scanner sc= new Scanner(System.in);
+	public static boolean playerStarts;
 		public static void main(String args[])
 		{
 			System.out.println("TICTACTOE GAME");
 			createBoard();
 			choosePawn();
+			checkToss();
 			//showBoard();
 			desiredMove();
 		}
@@ -57,6 +59,17 @@ public class TicTacToe {
 			}
 			showBoard();
 		}
-		
-	
+		public static void checkToss() {
+			int playerPos = 1;
+			double tossResult = Math.floor(Math.random() * 10) % 2;
+			if (tossResult == playerPos) 
+			{
+				playerStarts = true;
+				System.out.println("PLAYER WON THE TOSS");
+			} else 
+			{
+				playerStarts = false;
+				System.out.println("COMPUTER WON THE TOSS");
+			}
+		}
 }
