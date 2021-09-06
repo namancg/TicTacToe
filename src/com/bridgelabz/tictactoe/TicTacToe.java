@@ -19,7 +19,7 @@ public class TicTacToe {
 			checkToss();
 			//showBoard();
 			//nextMove();
-			isWinner();
+		    //isWinner();
 			startGame();
 		}
 		static void createBoard() {
@@ -83,46 +83,15 @@ public class TicTacToe {
 				System.out.println("COMPUTER WON THE TOSS");
 			}
 		}
-		public static boolean isWinner() 
-		{
-			if (checkWinner)
-				return true;
-			if ((board[1] == computer && board[2] == computer && board[3] == computer)
-					|| (board[4] == computer && board[5] == computer && board[6] == computer)
-					|| (board[7] == computer && board[8] == computer && board[9] == computer)
-					|| (board[1] == computer && board[4] == computer && board[7] == computer)
-					|| (board[2] == computer && board[5] == computer && board[8] == computer)
-					|| (board[3] == computer && board[6] == computer && board[9] == computer)
-					|| (board[1] == computer && board[5] == computer && board[9] == computer)
-					|| (board[3] == computer && board[5] == computer && board[7] == computer)) {
-				System.out.println("Computer Won");
-				checkWinner = true;
-				return true;
-			}
-
-			if ((board[1] == playerPawn && board[2] == playerPawn && board[3] == playerPawn)
-					|| (board[4] == playerPawn && board[5] == playerPawn && board[6] == playerPawn)
-					|| (board[7] == playerPawn && board[8] == playerPawn && board[9] == playerPawn)
-					|| (board[1] == playerPawn && board[4] == playerPawn && board[7] == playerPawn)
-					|| (board[2] == playerPawn && board[5] == playerPawn && board[8] == playerPawn)
-					|| (board[3] == playerPawn && board[6] == playerPawn && board[9] == playerPawn)
-					|| (board[1] == playerPawn && board[5] == playerPawn && board[9] == playerPawn)
-					|| (board[3] == playerPawn && board[5] == playerPawn && board[7] == playerPawn)) {
-				System.out.println("Player Won");
-				checkWinner = true;
-				return true;
-			}
-
-			return false;
-		}
+		
 		public static void userMove() 
 		{
-			System.out.println("Player Is Playing");
+			System.out.println("Player'S Turn");
 			System.out.println("Enter from 1-9 to make a next move");
 			while (true) {
 				playLocation = sc.nextInt();
 				sc.nextLine();
-				if (isEmpty(playLocation) && playLocation > 10 && playLocation < 0) {
+				if (isEmpty(playLocation) && playLocation < 10 && playLocation > 0) {
 					board[playLocation] = playerPawn;
 					showBoard();
 					break;
@@ -135,16 +104,16 @@ public class TicTacToe {
 
 		public static void computerMove()
 		{
-			System.out.println("Computer Is Playing");
+			System.out.println("Computer's Turn");
 			do {
 				playLocation = randomGenerator.nextInt(9) + 1;
-				if(predictWinLocation()) {
+				if(predictWinLocationAndBlock()) {
 				}
 			} while (!isEmpty(playLocation));
 			board[playLocation] = computer;
 			showBoard();
 		}
-		public static boolean predictWinLocation()
+		public static boolean predictWinLocationAndBlock()
 		{
 			if (board[1] == computer && board[2] == computer && board[3] == ' ')
 			{
@@ -266,8 +235,159 @@ public class TicTacToe {
 				playLocation = 5;
 				return true;
 			}
+			if (board[1] == playerPawn && board[2] == playerPawn && board[3] == ' ')
+			{
+				playLocation = 3;
+				return true;
+			}
+			if (board[1] == playerPawn && board[3] == playerPawn && board[2] == ' ') 
+			{
+				playLocation = 2;
+				return true;
+			}
+			if (board[3] == playerPawn && board[2] == playerPawn && board[1] == ' ')
+			{
+				playLocation = 1;
+				return true;
+			}
+			if (board[4] == playerPawn && board[5] == playerPawn && board[6] == ' ') 
+			{
+				playLocation = 6;
+				return true;
+			}
+			if (board[4] == playerPawn && board[6] == playerPawn && board[5] == ' ')
+			{
+				playLocation = 5;
+				return true;
+			}
+			if (board[6] == playerPawn && board[5] == playerPawn && board[4] == ' ')
+			{
+				playLocation = 4;
+				return true;
+			}
+			if (board[7] == playerPawn && board[8] == playerPawn && board[9] == ' ')
+			{
+				playLocation = 9;
+				return true;
+			}
+			if (board[7] == playerPawn && board[9] == playerPawn && board[8] == ' ')
+			{
+				playLocation = 8;
+				return true;
+			}
+			if (board[9] == playerPawn && board[8] == playerPawn && board[7] == ' ') 
+			{
+				playLocation = 7;
+				return true;
+			}
+			if (board[7] == playerPawn && board[5] == playerPawn && board[3] == ' ') 
+			{
+				playLocation = 3;
+				return true;
+			} 
+			if (board[1] == playerPawn && board[4] == playerPawn && board[7] == ' ')
+			{
+				playLocation = 7;
+				return true;
+			}
+			if (board[1] == playerPawn && board[7] == playerPawn && board[4] == ' ')
+			{
+				playLocation = 4;
+				return true;
+			}
+			if (board[7] == playerPawn && board[4] == playerPawn && board[1] == ' ')
+			{
+				playLocation = 1;
+				return true;
+			}
+			if (board[2] == playerPawn && board[5] == playerPawn && board[8] == ' ') 
+			{
+				playLocation = 8;
+				return true;
+			}
+			if (board[2] == playerPawn && board[8] == playerPawn && board[5] == ' ')
+			{
+				playLocation = 5;
+				return true;
+			}
+			if (board[8] == playerPawn && board[5] == playerPawn && board[2] == ' ')
+			{
+				playLocation = 2;
+				return true;
+			}
+			if (board[3] == playerPawn && board[6] == playerPawn && board[9] == ' ')
+			{
+				playLocation = 9;
+				return true;
+			}
+			if (board[3] == playerPawn && board[9] == playerPawn && board[6] == ' ') 
+			{
+				playLocation = 6;
+				return true;
+			}
+			if (board[9] == playerPawn && board[6] == playerPawn && board[3] == ' ')
+			{
+				playLocation = 3;
+				return true;
+			}
+			if (board[1] == playerPawn && board[5] == playerPawn && board[9] == ' ')
+			{
+				playLocation = 9;
+				return true;
+			}
+			if (board[1] == playerPawn && board[9] == playerPawn && board[5] == ' ') 
+			{
+				playLocation = 5;
+				return true;
+			}
+			if (board[9] == playerPawn && board[5] == playerPawn && board[1] == ' ') 
+			{
+				playLocation = 1;
+				return true;
+			}
+			if (board[3] == playerPawn && board[5] == playerPawn && board[7] == ' ')
+			{
+				playLocation = 7;
+				return true;
+			}
+			if (board[3] == playerPawn && board[7] == playerPawn && board[5] == ' ')
+			{
+				playLocation = 5;
+				return true;
+			}
 			else
 				return false;
+		}
+		public static boolean isWinner() 
+		{
+			if (checkWinner)
+				return true;
+			if ((board[1] == computer && board[2] == computer && board[3] == computer)
+					|| (board[4] == computer && board[5] == computer && board[6] == computer)
+					|| (board[7] == computer && board[8] == computer && board[9] == computer)
+					|| (board[1] == computer && board[4] == computer && board[7] == computer)
+					|| (board[2] == computer && board[5] == computer && board[8] == computer)
+					|| (board[3] == computer && board[6] == computer && board[9] == computer)
+					|| (board[1] == computer && board[5] == computer && board[9] == computer)
+					|| (board[3] == computer && board[5] == computer && board[7] == computer)) {
+				System.out.println("Computer Won");
+				checkWinner = true;
+				return true;
+			}
+			if ((board[1] == playerPawn && board[2] == playerPawn && board[3] == playerPawn)
+					|| (board[4] == playerPawn && board[5] == playerPawn && board[6] == playerPawn)
+					|| (board[7] == playerPawn && board[8] == playerPawn && board[9] == playerPawn)
+					|| (board[1] == playerPawn && board[4] == playerPawn && board[7] == playerPawn)
+					|| (board[2] == playerPawn && board[5] == playerPawn && board[8] == playerPawn)
+					|| (board[3] == playerPawn && board[6] == playerPawn && board[9] == playerPawn)
+					|| (board[1] == playerPawn && board[5] == playerPawn && board[9] == playerPawn)
+					|| (board[3] == playerPawn && board[5] == playerPawn && board[7] == playerPawn)) {
+				System.out.println("Player Won");
+				checkWinner = true;
+				return true;
+			}
+
+			return false;
 		}
 		public static boolean isEmpty(int location) 
 		{
