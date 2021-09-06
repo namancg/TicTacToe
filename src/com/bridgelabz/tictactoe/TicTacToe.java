@@ -102,12 +102,23 @@ public class TicTacToe {
 			}
 		}
 
+		
 		public static void computerMove()
 		{
 			System.out.println("Computer's Turn");
 			do {
-				playLocation = randomGenerator.nextInt(9) + 1;
-				if(predictWinLocationAndBlock()) {
+				int cornerLoc = randomGenerator.nextInt(4) + 1;		
+				if (predictWinLocationAndBlock()) {
+				}
+				else {
+					if(cornerLoc == 1)
+						playLocation = 1;
+					if(cornerLoc == 2)
+						playLocation = 3;
+					if(cornerLoc == 3)
+						playLocation = 7;
+					if(cornerLoc == 4)
+						playLocation = 9;
 				}
 			} while (!isEmpty(playLocation));
 			board[playLocation] = computer;
