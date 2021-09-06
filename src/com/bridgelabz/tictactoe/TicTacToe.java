@@ -107,7 +107,7 @@ public class TicTacToe {
 		{
 			System.out.println("Computer's Turn");
 			do {		
-				if (predictWinLocationAndBlock()) {
+				 {
 					occupyCornerOfBoard();
 					if (occupyCenterOfBoard()) {
 					}
@@ -118,6 +118,7 @@ public class TicTacToe {
 				}
 			} while (!isEmpty(playLocation));
 			board[playLocation] = computer;
+			showBoard();
 		}
 		public static void occupyCornerOfBoard()
 		{
@@ -140,10 +141,10 @@ public class TicTacToe {
 
 		public static boolean occupyOther() {
 			if (board[1] != ' ' && board[3] != ' ' && board[7] != ' ' && board[9] != ' ' && board[5] != ' ') {
-				int[] notCorners = { 2, 4, 6, 8 };
-				int notCorner = randomGenerator.nextInt(3);
-				if (isEmpty(notCorners[notCorner])) {
-					playLocation = notCorners[notCorner];
+				int[] centers = { 2, 4, 6, 8 };
+				int center = randomGenerator.nextInt(3);
+				if (isEmpty(centers[center])) {
+					playLocation = centers[center];
 					return true;
 				}
 			}
