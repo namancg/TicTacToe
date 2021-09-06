@@ -5,6 +5,7 @@ public class TicTacToe {
 	static char playerPawn,computer;
 	static Scanner sc= new Scanner(System.in);
 	public static boolean playerStarts;
+	public static char win;
 		public static void main(String args[])
 		{
 			System.out.println("TICTACTOE GAME");
@@ -13,6 +14,7 @@ public class TicTacToe {
 			checkToss();
 			//showBoard();
 			desiredMove();
+			isWinner();
 		}
 		static void createBoard() {
 			for( int i=1;i<10;i++)
@@ -34,9 +36,12 @@ public class TicTacToe {
 		}
 		static void showBoard()
 		{
-			 	System.out.println( board[1] + "|" + board[2]  + "|" + board[3] + "  ");
-		        System.out.println( board[4] + "|" + board[5]  + "|" + board[6] + "  ");
-		        System.out.println( board[7] + "|" + board[8]  + "|" + board[9] + "  ");
+			for (int i = 1; i < 10; i++) {
+			System.out.print(board[i] + "|");
+			if (i % 3 == 0) {
+				System.out.print("\n      \n");
+			}
+		}
 		}
 		static boolean playerMove(int userInput) 
 		{
@@ -71,5 +76,61 @@ public class TicTacToe {
 				playerStarts = false;
 				System.out.println("COMPUTER WON THE TOSS");
 			}
+		}
+
+		public static String isWinner() {
+			System.out.println();
+			if ((board[1] == board[2]) && (board[2] == board[3])) {
+				if (playerPawn == board[1]) {
+					return "Player Won this game";
+				} else if (computer == board[1]) {
+					return "Computer Won this game";
+				}
+			} else if ((board[4] == board[5]) && (board[5] == board[6])) {
+				if (playerPawn == board[4]) {
+					return "Player Won this game";
+				} else if (computer == board[4]) {
+					return "Computer Won this game";
+				}
+			} else if ((board[7] == board[8]) && (board[8] == board[9])) {
+				if (playerPawn == board[7]) {
+					return "Player Won this game";
+				} else if (computer == board[7]) {
+					return "Computer Won this game";
+				}
+			} else  if ((board[2] == board[5]) && (board[5] == board[8])) {
+				if (playerPawn == board[2]) {
+					return "Player Won this game";
+				} else if (computer == board[2]) {
+					return "Computer Won this game";
+				}
+			} else if ((board[3] == board[5]) && (board[5] == board[7])) {
+				if (playerPawn == board[3]) {
+					return "Player Won this game";
+				} else if (computer == board[3]) {
+					return "Computer Won this game";
+				}
+			} else if ((board[1] == board[4]) && (board[4] == board[7])) {
+				if (playerPawn == board[4]) {
+					return "Player Won this game";
+				} else if (computer == board[4]) {
+					return "Computer Won this game";
+				}
+			} else if ((board[1] == board[5]) && (board[5] == board[9])) {
+				if (playerPawn == board[1]) {
+					return "Player Won this game";
+				} else if (computer == board[1]) {
+					return "Computer Won this game";
+				}
+			} else if ((board[3] == board[6]) && (board[6] == board[9])) {
+				if (playerPawn == board[3]) {
+					return "Player Won this game";
+				} else if (computer == board[3]) {
+					return "Computer Won this game";
+				}
+			} else {
+				return "Draw";
+			}
+			return "";
 		}
 }
