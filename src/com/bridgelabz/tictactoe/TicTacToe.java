@@ -11,16 +11,25 @@ public class TicTacToe {
 	private static boolean playerWinToss;
 	private static boolean checkWinner = false;
 	public static final Random randomGenerator = new Random();
+	private static int continuePlaying;
 		public static void main(String args[])
 		{
 			System.out.println("TICTACTOE GAME");
 			createBoard();
 			choosePawn();
 			checkToss();
-			//showBoard();
-			//nextMove();
-		    //isWinner();
 			startGame();
+			System.out.println("Press '1' to continue playing, '2' to exit");
+			int continuePlaying = sc.nextInt();
+			if(continuePlaying ==2) {
+				System.out.println("END OF GAME");
+				System.exit(0);
+			}
+			else
+				createBoard();
+				choosePawn();
+				checkToss();
+				startGame();
 		}
 		static void createBoard() {
 			for( int i=1;i<10;i++)
